@@ -1,12 +1,11 @@
 import express from 'express'
 import lusca from 'lusca'
 import dotenv from 'dotenv'
+import compression from 'compression'
 
 import movieRouter from './routers/movie'
 import apiErrorHandler from './middlewares/apiErrorHandler'
 import apiContentType from './middlewares/apiContentType'
-import compression from 'compression'
-
 dotenv.config({ path: '.env' })
 const app = express()
 

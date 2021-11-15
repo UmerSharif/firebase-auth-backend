@@ -12,7 +12,7 @@ export const createMovie = async (
 ) => {
   try {
     const { name, publishedYear, genres, duration, characters } = req.body
-
+    console.log(req.body, 'from controller')
     const movie = new Movie({
       name,
       publishedYear,

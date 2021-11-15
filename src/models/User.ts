@@ -1,0 +1,30 @@
+/* eslint-disable @typescript-eslint/member-delimiter-style */
+import mongoose, { Document } from 'mongoose'
+
+export type ItemInCart = {
+  movies: string
+  quantity: number
+}
+
+export type UserDocument = Document & {
+  username: string
+  firstName: string
+  email: string
+  address: string
+  itemsInCart: ItemInCart[]
+}
+
+const userSchema = new mongoose.Schema({
+  username: { type: String },
+  firstName: { type: String },
+  email: { type: String },
+  address: { type: String },
+  itemsInCart: [
+    {
+      movies: { type: mongoose.Types.ObjectId, ref: 'Movie' },
+      quantity: Number,
+    },
+  ],
+})
+
+export default mongoose.model<UserDocument>('User', userSchema)

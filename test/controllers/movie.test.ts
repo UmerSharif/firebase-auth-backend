@@ -53,7 +53,7 @@ describe('movie controller', () => {
         publishedYear: 2019,
         // These fields should be included
         // rating: 3.5,
-        // duration: 120,
+        //  duration: 120,
         genres: ['Animation', 'Game'],
         characters: ['Red', 'Chuck', 'Bomb'],
       })
