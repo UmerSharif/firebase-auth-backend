@@ -9,6 +9,7 @@ export type ItemInCart = {
 export type UserDocument = Document & {
   username: string
   firstName: string
+  lastName: string
   email: string
   address: string
   itemsInCart: ItemInCart[]
@@ -17,6 +18,7 @@ export type UserDocument = Document & {
 const userSchema = new mongoose.Schema({
   username: { type: String },
   firstName: { type: String },
+  lastName: { type: String },
   email: { type: String },
   address: { type: String },
   itemsInCart: [

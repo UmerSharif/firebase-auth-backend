@@ -1,6 +1,28 @@
-import passport from 'passport'
-import passportLocal from 'passport-local'
+/* eslint-disable @typescript-eslint/no-var-requires */
+// import GoogleTokenStrategy from 'passport-google-id-token'
+// import { Strategy as JwtStrategy, ExtractJwt } from 'passport-jwt'
+// import jwt from 'jsonwebtoken'
+const GoogleTokenStrategy = require('passport-google-id-token')
 
-import { Request, Response, NextFunction } from 'express'
+import userService from '../services/user'
 
-const LocalStrategy = passportLocal.Strategy
+export const googleStrategy = new GoogleTokenStrategy(
+  {
+    clientID: process.env.GOOGLE_CLIENT_ID,
+  },
+  async function (parsedToken: any, googleId: string, done: any) {
+    // console.log(parsedToken)
+
+    const userPayload = {
+      email: parsedToken?.payload?.email,
+      firstName: parsedToken?.payload?.given_name,
+      lastName: parsedToken?.payload?.family_name,
+    }
+    try {
+      const user = await userService.findOrCreate(userPayload)
+      done(null, user)
+    } catch (e) {
+      done(e)
+    }
+  }
+)
