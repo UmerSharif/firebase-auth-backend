@@ -10,6 +10,7 @@ const router = express.Router()
 //  router.get('/', findAll)
 router.post('/', createUser)
 router.get('/', findAllUser)
+// router.get('/',passport.authenticate('jwt', {session: false}), findAllUser)
 router.post(
   '/google-authenticate',
   passport.authenticate('google-id-token', { session: false }),
