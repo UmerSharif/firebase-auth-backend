@@ -5,7 +5,7 @@ import compression from 'compression'
 import cors from 'cors'
 import passport from 'passport'
 
-import { googleStrategy } from './config/passport'
+import { googleStrategy, jwtStrategy } from './config/passport'
 import userRouter from './routers/user'
 import movieRouter from './routers/movie'
 import apiErrorHandler from './middlewares/apiErrorHandler'
@@ -27,6 +27,7 @@ app.use(cors())
 
 // Use movie router
 passport.use(googleStrategy)
+passport.use(jwtStrategy)
 app.use('/api/v1/movies', movieRouter)
 app.use('/api/v1/users', userRouter)
 // Custom API error handler
