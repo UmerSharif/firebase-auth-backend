@@ -16,7 +16,7 @@ export const createUser = async (
 ) => {
   try {
     const payload = req.body
-
+    console.log(req.body)
     await UserService.create(payload)
     res.json(payload)
   } catch (error) {
