@@ -1,17 +1,14 @@
 import User, { UserDocument } from '../models/User'
 import { NotFoundError } from '../helpers/apiError'
+import jwt from 'jsonwebtoken'
 
-async function findUserByEmail(email?: string): Promise<UserDocument> {
+async function findUserByEmail(email?: string): Promise<UserDocument | null> {
   const user = await User.findOne({ email })
-  if (!user) {
-    throw new NotFoundError()
-  }
   return user
 }
 
-async function create(payload: Partial<UserDocument>): Promise<UserDocument> {
-  const newUser = new User({ ...payload })
-  return newUser.save()
+async function create(user: UserDocument): Promise<UserDocument> {
+  return user.save()
 }
 
 async function findOrCreate(payload: Partial<UserDocument>) {
@@ -35,7 +32,16 @@ async function findAllUser(): Promise<UserDocument[]> {
   return User.find()
 }
 
+const generateToken = (user: Partial<UserDocument>) => {
+  const { email, id } = user
+  const token = jwt.sign({ email, id }, ' JWT_SECRET', {
+    expiresIn: '1h',
+  })
+  return token
+}
+
 export default {
+  generateToken,
   create,
   findUserByEmail,
   findOrCreate,

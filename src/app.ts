@@ -30,16 +30,15 @@ app.use(lusca.xframe('SAMEORIGIN'))
 app.use(lusca.xssProtection(true))
 app.use(cors())
 
-
-admin.initializeApp({
-  credential: admin.credential.cert(serviceAccount as any),
-})
+// admin.initializeApp({
+//   credential: admin.credential.cert(serviceAccount as any),
+// })
 
 // Use movie router
 passport.use(googleStrategy)
 passport.use(jwtStrategy)
 app.use('/api/v1/movies', movieRouter)
-app.use('/api/v1/users', checkAuth, userRouter)
+app.use('/api/v1/users', userRouter)
 // Custom API error handler
 app.use(apiErrorHandler)
 

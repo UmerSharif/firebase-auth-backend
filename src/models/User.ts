@@ -12,6 +12,7 @@ export type UserDocument = Document & {
   lastName: string
   email: string
   address: string
+  password: string
   itemsInCart: ItemInCart[]
 }
 
@@ -21,6 +22,7 @@ const userSchema = new mongoose.Schema({
   lastName: { type: String },
   email: { type: String },
   address: { type: String },
+  password: String,
   itemsInCart: [
     {
       movies: { type: mongoose.Types.ObjectId, ref: 'Movie' },

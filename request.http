@@ -14,7 +14,8 @@ Content-Type: application/json
 
 {
    "username": "Lord of the Rings",
-   "email": "hello@gmail.com"
+   "email": "hello@gmail.com",
+   "password": "hellowolrd"
 }
 
 ###
