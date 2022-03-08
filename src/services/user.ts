@@ -29,12 +29,12 @@ async function findOrCreate(payload: Partial<UserDocument>) {
 }
 
 async function findAllUser(): Promise<UserDocument[]> {
-  return User.find()
+  return User.find().select('-password')
 }
 
 const generateToken = (user: Partial<UserDocument>) => {
   const { email, id } = user
-  const token = jwt.sign({ email, id }, ' JWT_SECRET', {
+  const token = jwt.sign({ email, id }, 'JWT_SECRET', {
     expiresIn: '1h',
   })
   return token

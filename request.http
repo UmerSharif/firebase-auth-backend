@@ -34,8 +34,7 @@ GET http://localhost:5000/api/v1/users HTTP/1.1
 
 ###
 GET http://localhost:5000/api/v1/users HTTP/1.1
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2MjI3MWIxODAxMTFmOTFmNmQxODA1NGUiLCJlbWFpbCI6ImhlbGxvQGdtYWlsLmNvbSIsImlhdCI6MTY0NjczMDIzNSwiZXhwIjoxNjQ2NzMzODM1fQ.w6qAHNHYOoUyyW2PtsktupHyQF5acaX3nsVnajZ1kJM
-
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2MjI3MjhlMmVmNzMyZDI3YWVmODBmODUiLCJlbWFpbCI6ImhlbGxvQGdtYWlsLmNvbSIsImlhdCI6MTY0NjczMzU3NCwiZXhwIjoxNjQ2NzM3MTc0fQ.BcxS44yUarL5O_Rgnsa2UjhdBgqfy3trCxzi6A4dk_k
 ###
 GET http://localhost:5000/api/v1/movies HTTP/1.1
 

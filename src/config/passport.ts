@@ -30,7 +30,7 @@ export const googleStrategy = new GoogleTokenStrategy(
 
 export const jwtStrategy = new JwtStrategy(
   {
-    secretOrKey: ' JWT_SECRET',
+    secretOrKey: 'JWT_SECRET',
     jwtFromRequest: ExtractJwt.fromAuthHeaderAsBearerToken(),
   },
   async (payload: any, done: any) => {

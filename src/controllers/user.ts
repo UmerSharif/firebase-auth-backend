@@ -22,13 +22,13 @@ export const createUser = async (
     if (isUsernamelExist)
       return res.status(400).json({ error: 'Username already exists' })
 
-    const salt = await bcrypt.genSalt(10)
-    const hashedPassword = await bcrypt.hash(password, salt)
+    // const salt = await bcrypt.genSalt(10)
+    // const hashedPassword = await bcrypt.hash(password, salt)
 
     const newUser = new User({
       firstName,
       email,
-      password: hashedPassword,
+      password,
       username,
     })
     const user: any = await UserService.create(newUser)
@@ -52,13 +52,16 @@ export const LoginUser = async (
     const { email, password } = req.body
     const user: any = await UserService.findUserByEmail(email)
     if (user) {
-      const isPasswordMatch = await bcrypt.compare(password, user.password)
+      const isPasswordMatch = await user.comparePassword(
+        password,
+        user.password
+      )
       if (!isPasswordMatch)
         return next(new BadRequestError('Password is incorrect'))
       //generate token
       const token = jwt.sign(
         { userId: user._id, email: user.email },
-        ' JWT_SECRET',
+        'JWT_SECRET',
         {
           expiresIn: 3600, // expires in 1 hour
         }
