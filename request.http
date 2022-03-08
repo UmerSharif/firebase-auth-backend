@@ -19,8 +19,23 @@ Content-Type: application/json
 }
 
 ###
+POST http://localhost:5000/api/v1/users/login HTTP/1.1
+Content-Type: application/json
+
+{
+   "email": "hello@gmail.com",
+   "password": "hellowolrd"
+}
+
+###
 
 GET http://localhost:5000/api/v1/users HTTP/1.1
+
+
+###
+GET http://localhost:5000/api/v1/users HTTP/1.1
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2MjI3MWIxODAxMTFmOTFmNmQxODA1NGUiLCJlbWFpbCI6ImhlbGxvQGdtYWlsLmNvbSIsImlhdCI6MTY0NjczMDIzNSwiZXhwIjoxNjQ2NzMzODM1fQ.w6qAHNHYOoUyyW2PtsktupHyQF5acaX3nsVnajZ1kJM
+
 ###
 GET http://localhost:5000/api/v1/movies HTTP/1.1
 
