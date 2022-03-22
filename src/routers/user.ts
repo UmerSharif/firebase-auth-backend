@@ -1,5 +1,6 @@
 import express, { Response, Request } from 'express'
 import passport from 'passport'
+import { isUserAdmin } from '../middlewares/isUserAdmin'
 // let GoogleTokenStrategy = require('passport-google-id-token')
 
 import {
@@ -16,7 +17,12 @@ const router = express.Router()
 router.post('/', createUser)
 router.post('/login', LoginUser)
 //  router.get('/', findAllUser)
-router.get('/', passport.authenticate('jwt', { session: false }), findAllUser)
+router.get(
+  '/',
+  passport.authenticate('jwt', { session: false }),
+  isUserAdmin,
+  findAllUser
+)
 // router.post(
 //   '/google-authenticate',
 //   passport.authenticate('google-id-token', { session: false }),
