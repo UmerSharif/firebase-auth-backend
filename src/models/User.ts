@@ -15,6 +15,7 @@ export type UserDocument = Document & {
   email: string
   address: string
   password: string
+  isAdmin: boolean
   itemsInCart: ItemInCart[]
   comparePassword: (password: string) => Promise<boolean>
 }
@@ -26,6 +27,7 @@ const userSchema = new mongoose.Schema({
   email: { type: String },
   address: { type: String },
   password: String,
+  isAdmin: { type: Boolean },
   itemsInCart: [
     {
       movies: { type: mongoose.Types.ObjectId, ref: 'Movie' },

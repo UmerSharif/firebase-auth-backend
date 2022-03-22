@@ -16,7 +16,7 @@ export const createUser = async (
   next: NextFunction
 ) => {
   try {
-    const { firstName, email, password, username } = req.body
+    const { firstName, email, password, username, lastName } = req.body
     //bcrypt
     const isUsernamelExist = await UserService.findUserByEmail(email)
     if (isUsernamelExist)
@@ -30,6 +30,8 @@ export const createUser = async (
       email,
       password,
       username,
+      lastName,
+      isAdmin: email === 'umer.khan@integrify.io' ? true : false,
     })
     const user: any = await UserService.create(newUser)
     const token = UserService.generateToken(newUser)

@@ -33,9 +33,9 @@ async function findAllUser(): Promise<UserDocument[]> {
 }
 
 const generateToken = (user: Partial<UserDocument>) => {
-  const { email, id } = user
-  const token = jwt.sign({ email, id }, 'JWT_SECRET', {
-    expiresIn: '1h',
+  const { email, id, isAdmin } = user
+  const token = jwt.sign({ email, id, isAdmin }, 'JWT_SECRET', {
+    expiresIn: 500,
   })
   return token
 }
